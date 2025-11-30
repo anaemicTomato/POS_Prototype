@@ -230,5 +230,6 @@ namespace POS_Prototype.Windows
 
         //Nigga kulang kag Function para sa btnScan Nigga
         //Daun wala pa nimo na test tanan Nigga tang ina mo.
+        //what's up, I'm trying the local git repository.
     }
 }
