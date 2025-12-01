@@ -32,14 +32,12 @@
             label5 = new Label();
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             label4 = new Label();
             btnScan = new Button();
             btnCancel = new Button();
             btnSave = new Button();
             txtName = new TextBox();
             txtPrice = new TextBox();
-            txtStock = new TextBox();
             txtBarcode = new TextBox();
             picPreview = new PictureBox();
             panel1.SuspendLayout();
@@ -81,15 +79,6 @@
             label2.Size = new Size(53, 25);
             label2.TabIndex = 2;
             label2.Text = "Price:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(59, 232);
-            label3.Name = "label3";
-            label3.Size = new Size(59, 25);
-            label3.TabIndex = 3;
-            label3.Text = "Stock:";
             // 
             // label4
             // 
@@ -144,13 +133,6 @@
             txtPrice.Size = new Size(205, 31);
             txtPrice.TabIndex = 9;
             // 
-            // txtStock
-            // 
-            txtStock.Location = new Point(162, 232);
-            txtStock.Name = "txtStock";
-            txtStock.Size = new Size(205, 31);
-            txtStock.TabIndex = 10;
-            // 
             // txtBarcode
             // 
             txtBarcode.Location = new Point(162, 291);
@@ -173,14 +155,12 @@
             ClientSize = new Size(899, 496);
             Controls.Add(picPreview);
             Controls.Add(txtBarcode);
-            Controls.Add(txtStock);
             Controls.Add(txtPrice);
             Controls.Add(txtName);
             Controls.Add(btnSave);
             Controls.Add(btnCancel);
             Controls.Add(btnScan);
             Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(panel1);
@@ -201,14 +181,12 @@
         private Label label5;
         private Label label1;
         private Label label2;
-        private Label label3;
         private Label label4;
         private Button btnScan;
         private Button btnCancel;
         private Button btnSave;
         private TextBox txtName;
         private TextBox txtPrice;
-        private TextBox txtStock;
         private TextBox txtBarcode;
         private PictureBox picPreview;
     }

@@ -39,7 +39,6 @@
             colId = new DataGridViewTextBoxColumn();
             colName = new DataGridViewTextBoxColumn();
             colPrice = new DataGridViewTextBoxColumn();
-            colStock = new DataGridViewTextBoxColumn();
             colBarcode = new DataGridViewTextBoxColumn();
             colEdit = new DataGridViewButtonColumn();
             colDelete = new DataGridViewButtonColumn();
@@ -98,7 +97,7 @@
             // 
             dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colPrice, colStock, colBarcode, colEdit, colDelete });
+            dgvProducts.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colPrice, colBarcode, colEdit, colDelete });
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -141,12 +140,6 @@
             colPrice.HeaderText = "Price";
             colPrice.MinimumWidth = 8;
             colPrice.Name = "colPrice";
-            // 
-            // colStock
-            // 
-            colStock.HeaderText = "Stock";
-            colStock.MinimumWidth = 8;
-            colStock.Name = "colStock";
             // 
             // colBarcode
             // 
@@ -194,7 +187,6 @@
         private DataGridViewTextBoxColumn colId;
         private DataGridViewTextBoxColumn colName;
         private DataGridViewTextBoxColumn colPrice;
-        private DataGridViewTextBoxColumn colStock;
         private DataGridViewTextBoxColumn colBarcode;
         private DataGridViewButtonColumn colEdit;
         private DataGridViewButtonColumn colDelete;

@@ -61,7 +61,6 @@ namespace POS_Prototype.Controls.AdminControls
                     WHERE Name LIKE $search
                        OR Barcode LIKE $search
                        OR Price LIKE $search
-                       OR Stock LIKE $search
                 ";
                         cmd.Parameters.AddWithValue("$search", $"%{search}%");
                     }
@@ -74,7 +73,6 @@ namespace POS_Prototype.Controls.AdminControls
                                 reader["Id"],
                                 reader["Name"],
                                 reader["Price"],
-                                reader["Stock"],
                                 reader["Barcode"]
                             );
                         }

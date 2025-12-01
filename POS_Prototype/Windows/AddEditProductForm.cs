@@ -72,7 +72,6 @@ namespace POS_Prototype.Windows
                         {
                             txtName.Text = reader["Name"].ToString();
                             txtPrice.Text = reader["Price"].ToString();
-                            txtStock.Text = reader["Stock"].ToString();
                             txtBarcode.Text = reader["Barcode"].ToString();
                         }
                     }
@@ -93,12 +92,6 @@ namespace POS_Prototype.Windows
                 return;
             }
 
-            if (!int.TryParse(txtStock.Text, out int stock))
-            {
-                MessageBox.Show("Invalid stock!");
-                return;
-            }
-
             if (!File.Exists(dbPath))
             {
                 MessageBox.Show($"Database not found at:\n{dbPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -114,15 +107,14 @@ namespace POS_Prototype.Windows
 
                     if (productId == null) // ADD mode
                     {
-                        cmd.CommandText = @"INSERT INTO Products (Name, Price, Stock, Barcode)
-                                    VALUES ($name, $price, $stock, $barcode)";
+                        cmd.CommandText = @"INSERT INTO Products (Name, Price, Barcode)
+                                    VALUES ($name, $price, $barcode)";
                     }
                     else // EDIT mode
                     {
                         cmd.CommandText = @"UPDATE Products SET 
                                     Name=$name, 
-                                    Price=$price, 
-                                    Stock=$stock, 
+                                    Price=$price,
                                     Barcode=$barcode
                                     WHERE Id=$id";
                         cmd.Parameters.AddWithValue("$id", productId.Value);
@@ -130,7 +122,6 @@ namespace POS_Prototype.Windows
 
                     cmd.Parameters.AddWithValue("$name", txtName.Text);
                     cmd.Parameters.AddWithValue("$price", txtPrice.Text);
-                    cmd.Parameters.AddWithValue("$stock", txtStock.Text);
                     cmd.Parameters.AddWithValue("$barcode", txtBarcode.Text);
 
                     cmd.ExecuteNonQuery();
