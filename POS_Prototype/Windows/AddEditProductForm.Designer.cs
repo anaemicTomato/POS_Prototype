@@ -40,6 +40,7 @@
             txtPrice = new TextBox();
             txtBarcode = new TextBox();
             picPreview = new PictureBox();
+            cBoxCamPicker = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picPreview).BeginInit();
             SuspendLayout();
@@ -148,11 +149,20 @@
             picPreview.TabIndex = 12;
             picPreview.TabStop = false;
             // 
+            // cBoxCamPicker
+            // 
+            cBoxCamPicker.FormattingEnabled = true;
+            cBoxCamPicker.Location = new Point(182, 228);
+            cBoxCamPicker.Name = "cBoxCamPicker";
+            cBoxCamPicker.Size = new Size(182, 33);
+            cBoxCamPicker.TabIndex = 13;
+            // 
             // AddEditProductForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 496);
+            Controls.Add(cBoxCamPicker);
             Controls.Add(picPreview);
             Controls.Add(txtBarcode);
             Controls.Add(txtPrice);
@@ -168,6 +178,7 @@
             Name = "AddEditProductForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddEditProductForm";
+            Load += AddEditProductForm_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picPreview).EndInit();
@@ -189,5 +200,6 @@
         private TextBox txtPrice;
         private TextBox txtBarcode;
         private PictureBox picPreview;
+        private ComboBox cBoxCamPicker;
     }
 }
