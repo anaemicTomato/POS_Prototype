@@ -48,6 +48,25 @@ namespace POS_Prototype.Windows
             LoadProduct(); // populate fields for editing
         }
 
+        private void AddEditProductForm_Load(object sender, EventArgs e)
+        {
+            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+            if (videoDevices.Count == 0)
+            {
+                MessageBox.Show("No webcam detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Load all webcam names into ComboBox
+            foreach (FilterInfo device in videoDevices)
+            {
+                cBoxCamPicker.Items.Add(device.Name);
+            }
+
+            // Auto-select first webcam
+            cBoxCamPicker.SelectedIndex = 0;
+        }
         // Load product for edit mode
         private void LoadProduct()
         {
@@ -144,16 +163,18 @@ namespace POS_Prototype.Windows
         {
             try
             {
-                videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-
-                if (videoDevices.Count == 0)
+                if (cBoxCamPicker.SelectedIndex < 0)
                 {
-                    MessageBox.Show("No webcam detected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please select a webcam first.", "Error");
                     return;
                 }
 
-                // Use default webcam
-                videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
+                videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+                // Get selected webcam index
+                int selectedIndex = cBoxCamPicker.SelectedIndex;
+
+                videoSource = new VideoCaptureDevice(videoDevices[selectedIndex].MonikerString);
                 videoSource.NewFrame += VideoSource_NewFrame;
                 videoSource.Start();
 
@@ -218,6 +239,8 @@ namespace POS_Prototype.Windows
             }
             base.OnFormClosing(e);
         }
+
+        
 
         //Nigga kulang kag Function para sa btnScan Nigga
         //Daun wala pa nimo na test tanan Nigga tang ina mo.
