@@ -126,8 +126,8 @@ namespace POS_Prototype.Windows
 
                     if (productId == null) // ADD mode
                     {
-                        cmd.CommandText = @"INSERT INTO Products (Name, Price, Barcode)
-                                    VALUES ($name, $price, $barcode)";
+                        cmd.CommandText = @"INSERT INTO Products (Name, Price, Barcode, Stock)
+                                    VALUES ($name, $price, $barcode, $stock)";
                     }
                     else // EDIT mode
                     {
@@ -142,6 +142,7 @@ namespace POS_Prototype.Windows
                     cmd.Parameters.AddWithValue("$name", txtName.Text);
                     cmd.Parameters.AddWithValue("$price", txtPrice.Text);
                     cmd.Parameters.AddWithValue("$barcode", txtBarcode.Text);
+                    cmd.Parameters.AddWithValue("stock", 0);
 
                     cmd.ExecuteNonQuery();
                 }

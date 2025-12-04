@@ -60,8 +60,9 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
-            label2.Location = new Point(322, 15);
+            label2.Location = new Point(341, 14);
             label2.Name = "label2";
             label2.Size = new Size(184, 25);
             label2.TabIndex = 3;
@@ -78,7 +79,8 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(633, 66);
+            btnAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAdd.Location = new Point(661, 66);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(152, 34);
             btnAdd.TabIndex = 1;
