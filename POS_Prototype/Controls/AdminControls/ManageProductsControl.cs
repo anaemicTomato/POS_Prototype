@@ -94,7 +94,7 @@ namespace POS_Prototype.Controls.AdminControls
             LoadProducts();        // Now reload the data
         }
 
-        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return; // Ignore header
 
@@ -159,5 +159,25 @@ namespace POS_Prototype.Controls.AdminControls
             }
         }
 
+        private void dgvProducts_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string colName = dgvProducts.Columns[e.ColumnIndex].Name;           
+
+            if (colName == "colEdit")
+            {
+                e.CellStyle.BackColor = Color.LightSkyBlue;
+                e.CellStyle.ForeColor = Color.Black;
+            }
+
+            if (colName == "colDelete")
+            {
+                e.CellStyle.BackColor = Color.FromArgb(255, 128, 128);
+                e.CellStyle.ForeColor = Color.Black;
+            }
+        }
+
+        
     }
 }

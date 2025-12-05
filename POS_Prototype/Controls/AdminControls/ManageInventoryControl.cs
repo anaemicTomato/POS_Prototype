@@ -85,10 +85,7 @@ namespace POS_Prototype.Controls.AdminControls
         private void dgvInventory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvInventory.BeginEdit(true);
-        }
 
-        private void dgvInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
             if (e.RowIndex < 0) return; // Ignore header
 
             // Increase Stock (+)
@@ -213,6 +210,68 @@ namespace POS_Prototype.Controls.AdminControls
                 }
             }
         }
+
+
+        //Color2 rani siya diari
+
+        private void dgvInventory_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            string colName = dgvInventory.Columns[e.ColumnIndex].Name;
+
+            if (colName == "colStocks")
+            {
+                if (e.Value != null && int.TryParse(e.Value.ToString(), out int stockQuantity))
+                {
+                    string[] colorColumns = { "colId", "colName", "colStocks", "colBarcode" };
+
+                    foreach (string targetCol in colorColumns)
+                    {
+                        var cell = dgvInventory.Rows[e.RowIndex].Cells[targetCol];
+
+                        if (stockQuantity == 0)
+                        {
+                            cell.Style.BackColor = Color.IndianRed;
+                            cell.Style.ForeColor = Color.White;
+                        }
+                        else if (stockQuantity > 0 && stockQuantity <= 10)
+                        {
+                            cell.Style.BackColor = Color.Khaki;
+                            cell.Style.ForeColor = Color.Black;
+                        }
+                        else
+                        {
+                            cell.Style.BackColor = Color.White;
+                            cell.Style.ForeColor = Color.Black;
+                        }
+                    }
+                }
+            }
+
+            int stock = Convert.ToInt32(dgvInventory.Rows[e.RowIndex].Cells["colStocks"].Value);
+
+            if (colName == "colAddStock")
+            {
+                e.CellStyle.BackColor = Color.LightGreen;
+                e.CellStyle.ForeColor = Color.Black;
+            }
+
+            if (colName == "colMinusStock")
+            {
+                if (stock <= 0)
+                {
+                    e.CellStyle.BackColor = Color.FromArgb(241, 218, 218);
+                    e.CellStyle.ForeColor = Color.White;
+                }
+                else
+                {
+                    e.CellStyle.BackColor = Color.FromArgb(255, 128, 128);
+                    e.CellStyle.ForeColor = Color.White;
+                }
+            }
+        }
+
 
 
         //naa pay problema sa imoang stock column ug ag New Stock, dli mu update

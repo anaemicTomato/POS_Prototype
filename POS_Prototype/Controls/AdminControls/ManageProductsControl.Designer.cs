@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageProductsControl));
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
@@ -40,8 +41,8 @@
             colName = new DataGridViewTextBoxColumn();
             colPrice = new DataGridViewTextBoxColumn();
             colBarcode = new DataGridViewTextBoxColumn();
-            colEdit = new DataGridViewButtonColumn();
-            colDelete = new DataGridViewButtonColumn();
+            colEdit = new DataGridViewImageColumn();
+            colDelete = new DataGridViewImageColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvProducts).BeginInit();
             SuspendLayout();
@@ -97,6 +98,7 @@
             // 
             // dgvProducts
             // 
+            dgvProducts.AllowUserToAddRows = false;
             dgvProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProducts.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colPrice, colBarcode, colEdit, colDelete });
@@ -109,6 +111,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvProducts.DefaultCellStyle = dataGridViewCellStyle1;
             dgvProducts.Dock = DockStyle.Fill;
+            dgvProducts.EditMode = DataGridViewEditMode.EditOnF2;
             dgvProducts.Location = new Point(0, 118);
             dgvProducts.Name = "dgvProducts";
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -122,13 +125,15 @@
             dgvProducts.RowHeadersWidth = 62;
             dgvProducts.Size = new Size(851, 401);
             dgvProducts.TabIndex = 3;
-            dgvProducts.CellContentClick += dgvProducts_CellContentClick;
+            dgvProducts.CellClick += dgvProducts_CellClick;
+            dgvProducts.CellFormatting += dgvProducts_CellFormatting;
             // 
             // colId
             // 
             colId.HeaderText = "Product ID";
             colId.MinimumWidth = 8;
             colId.Name = "colId";
+            colId.ReadOnly = true;
             colId.Visible = false;
             // 
             // colName
@@ -136,34 +141,39 @@
             colName.HeaderText = "Name";
             colName.MinimumWidth = 8;
             colName.Name = "colName";
+            colName.ReadOnly = true;
             // 
             // colPrice
             // 
             colPrice.HeaderText = "Price";
             colPrice.MinimumWidth = 8;
             colPrice.Name = "colPrice";
+            colPrice.ReadOnly = true;
             // 
             // colBarcode
             // 
             colBarcode.HeaderText = "Barcode";
             colBarcode.MinimumWidth = 8;
             colBarcode.Name = "colBarcode";
+            colBarcode.ReadOnly = true;
             // 
             // colEdit
             // 
-            colEdit.HeaderText = "";
+            colEdit.HeaderText = "Edit Product";
+            colEdit.Image = (Image)resources.GetObject("colEdit.Image");
+            colEdit.ImageLayout = DataGridViewImageCellLayout.Zoom;
             colEdit.MinimumWidth = 8;
             colEdit.Name = "colEdit";
-            colEdit.Text = "Edit";
-            colEdit.UseColumnTextForButtonValue = true;
+            colEdit.Resizable = DataGridViewTriState.True;
             // 
             // colDelete
             // 
-            colDelete.HeaderText = "";
+            colDelete.HeaderText = "Remove Product";
+            colDelete.Image = (Image)resources.GetObject("colDelete.Image");
+            colDelete.ImageLayout = DataGridViewImageCellLayout.Zoom;
             colDelete.MinimumWidth = 8;
             colDelete.Name = "colDelete";
-            colDelete.Text = "Delete";
-            colDelete.UseColumnTextForButtonValue = true;
+            colDelete.Resizable = DataGridViewTriState.True;
             // 
             // ManageProductsControl
             // 
@@ -190,7 +200,7 @@
         private DataGridViewTextBoxColumn colName;
         private DataGridViewTextBoxColumn colPrice;
         private DataGridViewTextBoxColumn colBarcode;
-        private DataGridViewButtonColumn colEdit;
-        private DataGridViewButtonColumn colDelete;
+        private DataGridViewImageColumn colEdit;
+        private DataGridViewImageColumn colDelete;
     }
 }

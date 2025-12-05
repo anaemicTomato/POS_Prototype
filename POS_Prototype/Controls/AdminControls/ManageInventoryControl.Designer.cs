@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageInventoryControl));
             panel1 = new Panel();
             txtSearch = new TextBox();
             label2 = new Label();
@@ -37,8 +40,8 @@
             colName = new DataGridViewTextBoxColumn();
             colStocks = new DataGridViewTextBoxColumn();
             colBarcode = new DataGridViewTextBoxColumn();
-            colAddStock = new DataGridViewButtonColumn();
-            colMinusStock = new DataGridViewButtonColumn();
+            colAddStock = new DataGridViewImageColumn();
+            colMinusStock = new DataGridViewImageColumn();
             colCustomStock = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInventory).BeginInit();
@@ -85,24 +88,43 @@
             // 
             // dgvInventory
             // 
+            dgvInventory.AllowUserToAddRows = false;
             dgvInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvInventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInventory.Columns.AddRange(new DataGridViewColumn[] { colId, colName, colStocks, colBarcode, colAddStock, colMinusStock, colCustomStock });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvInventory.DefaultCellStyle = dataGridViewCellStyle2;
             dgvInventory.Dock = DockStyle.Fill;
+            dgvInventory.EditMode = DataGridViewEditMode.EditOnF2;
             dgvInventory.Location = new Point(0, 109);
             dgvInventory.Name = "dgvInventory";
             dgvInventory.RowHeadersWidth = 62;
             dgvInventory.Size = new Size(969, 440);
             dgvInventory.TabIndex = 1;
             dgvInventory.CellClick += dgvInventory_CellClick;
-            dgvInventory.CellContentClick += dgvInventory_CellContentClick;
             dgvInventory.CellEndEdit += dgvInventory_CellEndEdit;
+            dgvInventory.CellFormatting += dgvInventory_CellFormatting;
             // 
             // colId
             // 
             colId.HeaderText = "Product ID";
             colId.MinimumWidth = 8;
             colId.Name = "colId";
+            colId.ReadOnly = true;
             colId.Visible = false;
             // 
             // colName
@@ -110,34 +132,39 @@
             colName.HeaderText = "Product Name";
             colName.MinimumWidth = 8;
             colName.Name = "colName";
+            colName.ReadOnly = true;
             // 
             // colStocks
             // 
             colStocks.HeaderText = "Stocks";
             colStocks.MinimumWidth = 8;
             colStocks.Name = "colStocks";
+            colStocks.ReadOnly = true;
             // 
             // colBarcode
             // 
             colBarcode.HeaderText = "Barcode";
             colBarcode.MinimumWidth = 8;
             colBarcode.Name = "colBarcode";
+            colBarcode.ReadOnly = true;
             // 
             // colAddStock
             // 
-            colAddStock.HeaderText = "";
+            colAddStock.HeaderText = "Increase Stock";
+            colAddStock.Image = (Image)resources.GetObject("colAddStock.Image");
+            colAddStock.ImageLayout = DataGridViewImageCellLayout.Zoom;
             colAddStock.MinimumWidth = 8;
             colAddStock.Name = "colAddStock";
-            colAddStock.Text = "Increase Stock";
-            colAddStock.UseColumnTextForButtonValue = true;
+            colAddStock.Resizable = DataGridViewTriState.True;
             // 
             // colMinusStock
             // 
-            colMinusStock.HeaderText = "";
+            colMinusStock.HeaderText = "Decrease Stock";
+            colMinusStock.Image = (Image)resources.GetObject("colMinusStock.Image");
+            colMinusStock.ImageLayout = DataGridViewImageCellLayout.Zoom;
             colMinusStock.MinimumWidth = 8;
             colMinusStock.Name = "colMinusStock";
-            colMinusStock.Text = "Decrease Stock";
-            colMinusStock.UseColumnTextForButtonValue = true;
+            colMinusStock.Resizable = DataGridViewTriState.True;
             // 
             // colCustomStock
             // 
@@ -164,14 +191,14 @@
         private Panel panel1;
         private DataGridView dgvInventory;
         private Label label1;
+        private TextBox txtSearch;
+        private Label label2;
         private DataGridViewTextBoxColumn colId;
         private DataGridViewTextBoxColumn colName;
         private DataGridViewTextBoxColumn colStocks;
         private DataGridViewTextBoxColumn colBarcode;
-        private DataGridViewButtonColumn colAddStock;
-        private DataGridViewButtonColumn colMinusStock;
+        private DataGridViewImageColumn colAddStock;
+        private DataGridViewImageColumn colMinusStock;
         private DataGridViewTextBoxColumn colCustomStock;
-        private TextBox txtSearch;
-        private Label label2;
     }
 }
