@@ -39,4 +39,6 @@ namespace POS_Prototype.Data
             return $"Data Source={GetProjectDbPath()}";
         }
     }
+
+    //sup
 }
