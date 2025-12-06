@@ -8,11 +8,30 @@ namespace POS_Prototype.Data
 {
     public static class DBhelper
     {
+        private static readonly string DataFolder = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory, @"..\..\..", "Data"
+        );
+        private static readonly string TemplateDb = Path.Combine(DataFolder, "pos_templateDB.db");
+        private static readonly string LocalDb = Path.Combine(DataFolder, "pos.db");
+
         public static string GetProjectDbPath()
         {
-            string projectFolder = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
-            string dbPath = Path.Combine(projectFolder, "Data", "pos.db");
-            return dbPath;
+            Directory.CreateDirectory(DataFolder);
+
+            if (!File.Exists(LocalDb))
+            {
+                if (File.Exists(TemplateDb))
+                {
+                    // Copy template to create local DB
+                    File.Copy(TemplateDb, LocalDb);
+                }
+                else
+                {
+                    throw new FileNotFoundException("Template database not found. Cannot create runtime DB.");
+                }
+            }
+
+            return LocalDb;
         }
 
         public static string GetConnectionString()
