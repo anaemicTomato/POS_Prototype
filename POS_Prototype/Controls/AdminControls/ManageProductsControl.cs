@@ -9,13 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using POS_Prototype.Data;
 
 
 namespace POS_Prototype.Controls.AdminControls
 {
     public partial class ManageProductsControl : UserControl
     {
-        private readonly string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "pos.db");
+        private readonly string dbPath = DBhelper.GetProjectDbPath();
         private readonly string connectionString;
 
         public ManageProductsControl()
@@ -23,7 +24,7 @@ namespace POS_Prototype.Controls.AdminControls
             InitializeComponent();
 
             // Create the connection string
-            connectionString = $"Data Source={dbPath}";
+            connectionString = DBhelper.GetConnectionString();
             txtSearch.TextChanged += TxtSearch_TextChanged;
             LoadProducts();
         }

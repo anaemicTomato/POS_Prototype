@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZXing;
 using ZXing.QrCode;
+using POS_Prototype.Data;
 
 namespace POS_Prototype.Windows
 {
@@ -20,7 +21,7 @@ namespace POS_Prototype.Windows
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
 
-        private readonly string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "pos.db");
+        private readonly string dbPath = DBhelper.GetProjectDbPath();
         private readonly string connectionString;
         private int? productId = null; // nullable, only set in edit mode
 
@@ -32,7 +33,7 @@ namespace POS_Prototype.Windows
             this.Text = "Add Product";
 
             // Build connection string
-            connectionString = $"Data Source={dbPath}";
+            connectionString = DBhelper.GetConnectionString();
         }
 
         // EDIT MODE constructor
@@ -43,7 +44,7 @@ namespace POS_Prototype.Windows
             productId = id;
 
             // Build connection string
-            connectionString = $"Data Source={dbPath}";
+            connectionString = DBhelper.GetConnectionString();
 
             LoadProduct(); // populate fields for editing
         }
@@ -70,6 +71,7 @@ namespace POS_Prototype.Windows
         // Load product for edit mode
         private void LoadProduct()
         {
+
             if (!File.Exists(dbPath))
             {
                 MessageBox.Show($"Database not found at:\n{dbPath}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <Content Include="Data\pos.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

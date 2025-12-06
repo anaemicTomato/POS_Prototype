@@ -1,5 +1,6 @@
 using POS_Prototype.Windows;
 using Microsoft.Data.Sqlite;
+using POS_Prototype.Data;
 
 namespace POS_Prototype
 {
@@ -20,9 +21,8 @@ namespace POS_Prototype
             string username = userTextBox.Text;
             string password = passTextBox.Text;
 
-            // Build path to your database
-            string dbPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "pos.db");
-            string connectionString = $"Data Source={dbPath}";
+            // Gamita ag DBHelper class para maghimog connection string
+            string connectionString = DBhelper.GetConnectionString();
 
             try
             {
