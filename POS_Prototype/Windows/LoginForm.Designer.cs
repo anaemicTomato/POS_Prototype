@@ -64,6 +64,7 @@
             passTextBox.Size = new Size(250, 30);
             passTextBox.TabIndex = 1;
             passTextBox.TextAlign = HorizontalAlignment.Center;
+            passTextBox.UseSystemPasswordChar = true;
             // 
             // btnClose
             // 

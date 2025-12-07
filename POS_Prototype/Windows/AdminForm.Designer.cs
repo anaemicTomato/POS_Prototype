@@ -169,6 +169,7 @@
             btnManageUsers.TabIndex = 4;
             btnManageUsers.Text = "Manage Users";
             btnManageUsers.UseVisualStyleBackColor = false;
+            btnManageUsers.Click += btnManageUsers_Click;
             // 
             // btnManageInventory
             // 

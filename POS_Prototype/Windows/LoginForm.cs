@@ -41,9 +41,21 @@ namespace POS_Prototype
 
                         if (!string.IsNullOrEmpty(role))
                         {
+                            //Update last_login
+                            using (var updateCon = new SqliteConnection(connectionString))
+                            {
+                                updateCon.Open();
+                                var updateCmd = updateCon.CreateCommand();
+                                updateCmd.CommandText = @"UPDATE users 
+                                  SET last_login = datetime('now','localtime') 
+                                  WHERE username = $username";
+                                updateCmd.Parameters.AddWithValue("$username", username);
+                                updateCmd.ExecuteNonQuery();
+                            }
+
                             MessageBox.Show($"Login successful! Role: {role}");
 
-                            if (role == "admin")
+                            if (role == "Admin")
                             {
                                 this.Hide();
                                 using (AdminForm adminForm = new AdminForm())
@@ -57,7 +69,7 @@ namespace POS_Prototype
 
                                 this.Show(); // show login again
                             }
-                            else if (role == "cashier")
+                            else if (role == "Cashier")
                             {
                                 CashierForm cashierForm = new CashierForm();
                                 cashierForm.Show();
