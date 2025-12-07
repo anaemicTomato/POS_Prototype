@@ -113,11 +113,13 @@
             dgvInventory.Location = new Point(0, 109);
             dgvInventory.Name = "dgvInventory";
             dgvInventory.RowHeadersWidth = 62;
+            dgvInventory.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dgvInventory.Size = new Size(969, 440);
             dgvInventory.TabIndex = 1;
             dgvInventory.CellClick += dgvInventory_CellClick;
             dgvInventory.CellEndEdit += dgvInventory_CellEndEdit;
             dgvInventory.CellFormatting += dgvInventory_CellFormatting;
+            dgvInventory.CellStateChanged += dgvInventory_CellStateChanged;
             // 
             // colId
             // 

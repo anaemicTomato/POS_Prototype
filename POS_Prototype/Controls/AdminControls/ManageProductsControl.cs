@@ -179,6 +179,18 @@ namespace POS_Prototype.Controls.AdminControls
             }
         }
 
-        
+        //pang disable rani siya sa selection highlight ban
+        private void dgvInventory_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            if (e.StateChanged == DataGridViewElementStates.Selected)
+            {
+                string colName = e.Cell.OwningColumn.Name;
+
+                if (colName == "colName" || colName == "colPrice" || colName == "colBarcode")
+                {
+                    e.Cell.Selected = false;
+                }
+            }
+        }
     }
 }

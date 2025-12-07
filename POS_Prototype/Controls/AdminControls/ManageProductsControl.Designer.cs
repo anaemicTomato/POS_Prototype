@@ -123,10 +123,12 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvProducts.RowHeadersWidth = 62;
+            dgvProducts.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dgvProducts.Size = new Size(851, 401);
             dgvProducts.TabIndex = 3;
             dgvProducts.CellClick += dgvProducts_CellClick;
             dgvProducts.CellFormatting += dgvProducts_CellFormatting;
+            dgvProducts.CellStateChanged += dgvInventory_CellStateChanged;
             // 
             // colId
             // 
