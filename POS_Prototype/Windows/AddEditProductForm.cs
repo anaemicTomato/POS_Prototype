@@ -172,6 +172,9 @@ namespace POS_Prototype.Windows
                     return;
                 }
 
+                pbOverlay.Visible = false;
+                lblOverlay.Visible = false;
+
                 videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
                 // Get selected webcam index

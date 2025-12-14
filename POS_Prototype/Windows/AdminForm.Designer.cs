@@ -33,10 +33,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             topPanel = new Panel();
             SidePanel = new Panel();
-            adminUserLabel = new Label();
             btnReturn = new Button();
             iconImageList = new ImageList(components);
-            btnSettings = new Button();
             btnReports = new Button();
             btnManageUsers = new Button();
             btnManageInventory = new Button();
@@ -50,7 +48,7 @@
             // 
             // topPanel
             // 
-            topPanel.BackColor = Color.FromArgb(44, 88, 110);
+            topPanel.BackColor = Color.FromArgb(15, 20, 35);
             topPanel.Dock = DockStyle.Top;
             topPanel.Location = new Point(0, 0);
             topPanel.Name = "topPanel";
@@ -59,10 +57,8 @@
             // 
             // SidePanel
             // 
-            SidePanel.BackColor = Color.FromArgb(14, 35, 46);
-            SidePanel.Controls.Add(adminUserLabel);
+            SidePanel.BackColor = Color.FromArgb(29, 36, 62);
             SidePanel.Controls.Add(btnReturn);
-            SidePanel.Controls.Add(btnSettings);
             SidePanel.Controls.Add(btnReports);
             SidePanel.Controls.Add(btnManageUsers);
             SidePanel.Controls.Add(btnManageInventory);
@@ -75,21 +71,10 @@
             SidePanel.Size = new Size(400, 764);
             SidePanel.TabIndex = 1;
             // 
-            // adminUserLabel
-            // 
-            adminUserLabel.AutoSize = true;
-            adminUserLabel.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            adminUserLabel.ForeColor = Color.LightGreen;
-            adminUserLabel.Location = new Point(150, 175);
-            adminUserLabel.Name = "adminUserLabel";
-            adminUserLabel.Size = new Size(94, 24);
-            adminUserLabel.TabIndex = 8;
-            adminUserLabel.Text = "username";
-            // 
             // btnReturn
             // 
             btnReturn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnReturn.BackColor = Color.FromArgb(221, 159, 82);
+            btnReturn.BackColor = Color.LightSkyBlue;
             btnReturn.FlatAppearance.BorderSize = 0;
             btnReturn.FlatStyle = FlatStyle.Flat;
             btnReturn.ImageKey = "ReturnKey (Black).png";
@@ -119,51 +104,35 @@
             iconImageList.Images.SetKeyName(10, "ReturnKey (Black).png");
             iconImageList.Images.SetKeyName(11, "ReturnKey (White).png");
             // 
-            // btnSettings
-            // 
-            btnSettings.BackColor = SystemColors.ActiveCaptionText;
-            btnSettings.FlatAppearance.BorderSize = 0;
-            btnSettings.FlatStyle = FlatStyle.Flat;
-            btnSettings.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSettings.ForeColor = SystemColors.ButtonHighlight;
-            btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.ImageKey = "Settings (White).png";
-            btnSettings.ImageList = iconImageList;
-            btnSettings.Location = new Point(36, 572);
-            btnSettings.Name = "btnSettings";
-            btnSettings.Size = new Size(328, 53);
-            btnSettings.TabIndex = 6;
-            btnSettings.Text = "Settings";
-            btnSettings.UseVisualStyleBackColor = false;
-            // 
             // btnReports
             // 
-            btnReports.BackColor = SystemColors.ActiveCaptionText;
+            btnReports.BackColor = Color.Black;
             btnReports.FlatAppearance.BorderSize = 0;
             btnReports.FlatStyle = FlatStyle.Flat;
-            btnReports.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnReports.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold);
             btnReports.ForeColor = SystemColors.ButtonHighlight;
             btnReports.ImageAlign = ContentAlignment.MiddleLeft;
             btnReports.ImageKey = "Sales Report (White).png";
             btnReports.ImageList = iconImageList;
-            btnReports.Location = new Point(36, 508);
+            btnReports.Location = new Point(36, 582);
             btnReports.Name = "btnReports";
             btnReports.Size = new Size(328, 53);
             btnReports.TabIndex = 5;
             btnReports.Text = "Reports";
             btnReports.UseVisualStyleBackColor = false;
+            btnReports.Click += btnReports_Click;
             // 
             // btnManageUsers
             // 
-            btnManageUsers.BackColor = SystemColors.ActiveCaptionText;
+            btnManageUsers.BackColor = Color.Black;
             btnManageUsers.FlatAppearance.BorderSize = 0;
             btnManageUsers.FlatStyle = FlatStyle.Flat;
-            btnManageUsers.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnManageUsers.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold);
             btnManageUsers.ForeColor = SystemColors.ButtonHighlight;
             btnManageUsers.ImageAlign = ContentAlignment.MiddleLeft;
             btnManageUsers.ImageKey = "User Management (White).png";
             btnManageUsers.ImageList = iconImageList;
-            btnManageUsers.Location = new Point(36, 444);
+            btnManageUsers.Location = new Point(36, 518);
             btnManageUsers.Name = "btnManageUsers";
             btnManageUsers.Size = new Size(328, 53);
             btnManageUsers.TabIndex = 4;
@@ -173,15 +142,15 @@
             // 
             // btnManageInventory
             // 
-            btnManageInventory.BackColor = SystemColors.ActiveCaptionText;
+            btnManageInventory.BackColor = Color.Black;
             btnManageInventory.FlatAppearance.BorderSize = 0;
             btnManageInventory.FlatStyle = FlatStyle.Flat;
-            btnManageInventory.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnManageInventory.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold);
             btnManageInventory.ForeColor = SystemColors.ButtonHighlight;
             btnManageInventory.ImageAlign = ContentAlignment.MiddleLeft;
             btnManageInventory.ImageKey = "Inventory (White).png";
             btnManageInventory.ImageList = iconImageList;
-            btnManageInventory.Location = new Point(36, 380);
+            btnManageInventory.Location = new Point(36, 454);
             btnManageInventory.Name = "btnManageInventory";
             btnManageInventory.Size = new Size(328, 53);
             btnManageInventory.TabIndex = 3;
@@ -191,15 +160,15 @@
             // 
             // btnManageProducts
             // 
-            btnManageProducts.BackColor = SystemColors.ActiveCaptionText;
+            btnManageProducts.BackColor = Color.Black;
             btnManageProducts.FlatAppearance.BorderSize = 0;
             btnManageProducts.FlatStyle = FlatStyle.Flat;
-            btnManageProducts.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnManageProducts.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold);
             btnManageProducts.ForeColor = SystemColors.ButtonHighlight;
             btnManageProducts.ImageAlign = ContentAlignment.MiddleLeft;
             btnManageProducts.ImageKey = "Products (White).png";
             btnManageProducts.ImageList = iconImageList;
-            btnManageProducts.Location = new Point(36, 317);
+            btnManageProducts.Location = new Point(36, 391);
             btnManageProducts.Name = "btnManageProducts";
             btnManageProducts.Size = new Size(328, 53);
             btnManageProducts.TabIndex = 2;
@@ -210,18 +179,18 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(220, 200, 148);
-            label2.Location = new Point(129, 206);
+            label2.Font = new Font("Microsoft YaHei UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.MediumSpringGreen;
+            label2.Location = new Point(120, 216);
             label2.Name = "label2";
-            label2.Size = new Size(139, 25);
+            label2.Size = new Size(152, 27);
             label2.TabIndex = 1;
             label2.Text = "Administrator";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(139, 45);
+            pictureBox1.Location = new Point(138, 87);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(115, 117);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -233,6 +202,7 @@
             MainPanel.Dock = DockStyle.Fill;
             MainPanel.Location = new Point(400, 80);
             MainPanel.Name = "MainPanel";
+            MainPanel.Padding = new Padding(15);
             MainPanel.Size = new Size(978, 764);
             MainPanel.TabIndex = 2;
             // 
@@ -265,11 +235,9 @@
         private Label label2;
         private Button btnManageProducts;
         private ImageList iconImageList;
-        private Button btnSettings;
         private Button btnReports;
         private Button btnManageUsers;
         private Button btnManageInventory;
         private Button btnReturn;
-        private Label adminUserLabel;
     }
 }

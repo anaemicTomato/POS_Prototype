@@ -49,30 +49,31 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(15, 20, 35);
             panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(969, 109);
+            panel1.Size = new Size(969, 150);
             panel1.TabIndex = 0;
             // 
             // txtSearch
             // 
-            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            txtSearch.Location = new Point(746, 62);
+            txtSearch.Location = new Point(108, 101);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(177, 31);
+            txtSearch.Size = new Size(192, 31);
             txtSearch.TabIndex = 2;
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(672, 65);
+            label2.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(25, 105);
             label2.Name = "label2";
-            label2.Size = new Size(68, 25);
+            label2.Size = new Size(77, 25);
             label2.TabIndex = 1;
             label2.Text = "Search:";
             // 
@@ -80,9 +81,11 @@
             // 
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
-            label1.Location = new Point(400, 19);
+            label1.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.MediumSpringGreen;
+            label1.Location = new Point(371, 25);
             label1.Name = "label1";
-            label1.Size = new Size(197, 25);
+            label1.Size = new Size(224, 25);
             label1.TabIndex = 0;
             label1.Text = "Inventory Management";
             // 
@@ -90,6 +93,7 @@
             // 
             dgvInventory.AllowUserToAddRows = false;
             dgvInventory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvInventory.BackgroundColor = Color.FromArgb(207, 217, 255);
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -110,11 +114,11 @@
             dgvInventory.DefaultCellStyle = dataGridViewCellStyle2;
             dgvInventory.Dock = DockStyle.Fill;
             dgvInventory.EditMode = DataGridViewEditMode.EditOnF2;
-            dgvInventory.Location = new Point(0, 109);
+            dgvInventory.Location = new Point(0, 150);
             dgvInventory.Name = "dgvInventory";
             dgvInventory.RowHeadersWidth = 62;
             dgvInventory.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dgvInventory.Size = new Size(969, 440);
+            dgvInventory.Size = new Size(969, 399);
             dgvInventory.TabIndex = 1;
             dgvInventory.CellClick += dgvInventory_CellClick;
             dgvInventory.CellEndEdit += dgvInventory_CellEndEdit;
