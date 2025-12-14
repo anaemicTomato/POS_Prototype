@@ -46,10 +46,10 @@
             userTextBox.BackColor = SystemColors.GradientInactiveCaption;
             userTextBox.BorderStyle = BorderStyle.FixedSingle;
             userTextBox.Font = new Font("Microsoft YaHei UI", 9F);
-            userTextBox.Location = new Point(452, 200);
+            userTextBox.Location = new Point(443, 195);
             userTextBox.Name = "userTextBox";
             userTextBox.PlaceholderText = "Username";
-            userTextBox.Size = new Size(250, 30);
+            userTextBox.Size = new Size(260, 30);
             userTextBox.TabIndex = 0;
             userTextBox.TextAlign = HorizontalAlignment.Center;
             // 
@@ -58,10 +58,10 @@
             passTextBox.BackColor = SystemColors.GradientInactiveCaption;
             passTextBox.BorderStyle = BorderStyle.FixedSingle;
             passTextBox.Font = new Font("Microsoft YaHei UI", 9F);
-            passTextBox.Location = new Point(452, 252);
+            passTextBox.Location = new Point(443, 249);
             passTextBox.Name = "passTextBox";
             passTextBox.PlaceholderText = "Password";
-            passTextBox.Size = new Size(250, 30);
+            passTextBox.Size = new Size(260, 30);
             passTextBox.TabIndex = 1;
             passTextBox.TextAlign = HorizontalAlignment.Center;
             passTextBox.UseSystemPasswordChar = true;
@@ -72,9 +72,9 @@
             btnClose.BackgroundImageLayout = ImageLayout.None;
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = FlatStyle.Popup;
-            btnClose.Font = new Font("Microsoft YaHei UI", 9F);
+            btnClose.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold);
             btnClose.ForeColor = Color.White;
-            btnClose.Location = new Point(452, 322);
+            btnClose.Location = new Point(443, 326);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(104, 34);
             btnClose.TabIndex = 2;
@@ -87,9 +87,9 @@
             btnLogin.BackColor = Color.SteelBlue;
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.FlatStyle = FlatStyle.Popup;
-            btnLogin.Font = new Font("Microsoft YaHei UI", 9F);
+            btnLogin.Font = new Font("Microsoft YaHei UI", 9F, FontStyle.Bold);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(598, 322);
+            btnLogin.Location = new Point(599, 326);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(104, 34);
             btnLogin.TabIndex = 3;
@@ -99,7 +99,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(14, 35, 46);
+            panel1.BackColor = Color.FromArgb(29, 36, 62);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Left;
@@ -132,8 +132,10 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = SystemColors.Window;
             label2.Font = new Font("Microsoft YaHei UI", 8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(503, 111);
+            label2.ForeColor = Color.MidnightBlue;
+            label2.Location = new Point(492, 109);
             label2.Name = "label2";
             label2.Size = new Size(151, 22);
             label2.TabIndex = 5;
@@ -145,14 +147,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
+            Controls.Add(userTextBox);
             Controls.Add(label2);
             Controls.Add(panel1);
             Controls.Add(btnLogin);
             Controls.Add(btnClose);
             Controls.Add(passTextBox);
-            Controls.Add(userTextBox);
             ForeColor = SystemColors.ControlText;
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

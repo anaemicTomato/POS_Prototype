@@ -55,7 +55,15 @@ namespace POS_Prototype.Windows
         }
         //kkulang pakag mga modules dri gar
 
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear(); // remove previous page
 
+            SalesReportControl page = new SalesReportControl();
+            page.Dock = DockStyle.Fill;
+
+            MainPanel.Controls.Add(page);
+        }
 
 
 
@@ -65,5 +73,7 @@ namespace POS_Prototype.Windows
             login.Show();
             this.Close();
         }
+
+        
     }
 }
