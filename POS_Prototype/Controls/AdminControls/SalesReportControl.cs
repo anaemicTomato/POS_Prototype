@@ -70,7 +70,7 @@ namespace POS_Prototype.Controls.AdminControls
             con.Open();
 
             string sql = @"
-        SELECT sale_id, datetime, subtotal, discount, total_amount,
+        SELECT sale_id, sale_code, datetime, subtotal, discount, total_amount,
                cash_tendered, change_given
         FROM sales";
 
@@ -114,6 +114,7 @@ namespace POS_Prototype.Controls.AdminControls
             dgvSales.Columns["datetime"].DefaultCellStyle.Format = "MM/dd/yyyy";
 
             // Format columns (same as before)
+            dgvSales.Columns["sale_code"].HeaderText = "Sale Code";
             dgvSales.Columns["sale_id"].HeaderText = "Sale ID";
             dgvSales.Columns["datetime"].HeaderText = "Date & Time";
             dgvSales.Columns["subtotal"].HeaderText = "Subtotal (₱)";
@@ -121,6 +122,9 @@ namespace POS_Prototype.Controls.AdminControls
             dgvSales.Columns["total_amount"].HeaderText = "Total Amount (₱)";
             dgvSales.Columns["cash_tendered"].HeaderText = "Cash Given (₱)";
             dgvSales.Columns["change_given"].HeaderText = "Change Given (₱)";
+
+            dgvSales.Columns["sale_code"].DisplayIndex = 0;
+            dgvSales.Columns["sale_id"].Visible = false;
 
             UpdateSummary(dt);
 

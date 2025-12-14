@@ -21,6 +21,8 @@ namespace POS_Prototype.Windows
         private readonly string dbPath = DBhelper.GetProjectDbPath();
         private readonly string connectionString;
         private int previousQty = 0;
+        private string currentSaleCode;
+
 
         public CashierForm()
         {
@@ -320,14 +322,17 @@ namespace POS_Prototype.Windows
                 // 1️⃣ INSERT SALE
                 string saleSql = @"
             INSERT INTO sales 
-            (datetime, subtotal, discount, total_amount, cash_tendered, change_given)
-            VALUES (datetime('now','localtime'), @sub, @disc, @total, @cash, @change);
+            (sale_code, datetime, subtotal, discount, total_amount, cash_tendered, change_given)
+            VALUES (@code, datetime('now','localtime'), @sub, @disc, @total, @cash, @change);
             SELECT last_insert_rowid();
         ";
 
                 long saleId;
+                currentSaleCode = GenerateSaleCode();
+
                 using (var cmdSale = new SqliteCommand(saleSql, con, tran))
                 {
+                    cmdSale.Parameters.AddWithValue("@code", currentSaleCode);
                     cmdSale.Parameters.AddWithValue("@sub", subtotal);
                     cmdSale.Parameters.AddWithValue("@disc", discount);
                     cmdSale.Parameters.AddWithValue("@total", total);
@@ -381,7 +386,7 @@ namespace POS_Prototype.Windows
                 PrintReceipt();
 
                 MessageBox.Show(
-                    $"Sale completed successfully!\nSale ID: {saleId}\nChange: ₱ {change:N2}",
+                    $"Sale completed!\nSale Code: {currentSaleCode}\nChange: ₱ {change:N2}",
                     "Success"
                 );
 
@@ -405,6 +410,7 @@ namespace POS_Prototype.Windows
 
         private void PrintReceipt()
         {
+
             System.Drawing.Printing.PrintDocument receipt = new System.Drawing.Printing.PrintDocument();
 
 
@@ -435,6 +441,10 @@ namespace POS_Prototype.Windows
 
 
             e.Graphics.DrawString("--- SALE RECEIPT ---", printFont, myBrush, leftMargin + 10, yPos);
+            yPos += lineSpacing;
+
+            // Sale code goes here
+            e.Graphics.DrawString($"Sale Code: {currentSaleCode}", printFont, myBrush, leftMargin, yPos);
             yPos += lineSpacing * 2;
 
 
@@ -533,6 +543,10 @@ namespace POS_Prototype.Windows
             }
         }
 
-        
+        private string GenerateSaleCode()
+        {
+            // Example: POS-20251214-8392
+            return $"POS-{DateTime.Now:yyyyMMdd}-{Random.Shared.Next(1000, 9999)}";
+        }
     }
 }
