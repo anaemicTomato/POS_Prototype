@@ -44,9 +44,26 @@ namespace POS_Prototype.Windows
             MainPanel.Controls.Add(page);
         }
 
+        private void btnManageUsers_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear(); // remove previous page
+
+            ManageUsersControl page = new ManageUsersControl();
+            page.Dock = DockStyle.Fill;
+
+            MainPanel.Controls.Add(page);
+        }
         //kkulang pakag mga modules dri gar
 
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear(); // remove previous page
 
+            SalesReportControl page = new SalesReportControl();
+            page.Dock = DockStyle.Fill;
+
+            MainPanel.Controls.Add(page);
+        }
 
 
 
@@ -56,5 +73,7 @@ namespace POS_Prototype.Windows
             login.Show();
             this.Close();
         }
+
+        
     }
 }

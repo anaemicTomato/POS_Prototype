@@ -262,7 +262,7 @@ namespace POS_Prototype.Controls.AdminControls
             {
                 if (stock <= 0)
                 {
-                    e.CellStyle.BackColor = Color.FromArgb(241, 218, 218);
+                    e.CellStyle.BackColor = Color.Gray;
                     e.CellStyle.ForeColor = Color.White;
                 }
                 else
@@ -273,10 +273,18 @@ namespace POS_Prototype.Controls.AdminControls
             }
         }
 
+        //pang disable rani siya sa selection highlight ban
+        private void dgvInventory_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            if (e.StateChanged == DataGridViewElementStates.Selected)
+            {
+                string colName = e.Cell.OwningColumn.Name;
 
-
-        //naa pay problema sa imoang stock column ug ag New Stock, dli mu update
-        //after ana, either ipakita sa Product management ang stock or pagbutang ug indicators
-        //mupula ang row pag isa nalang ang stock or unsa.
+                if (colName == "colName" || colName == "colStocks" || colName == "colBarcode")
+                {
+                    e.Cell.Selected = false;
+                }
+            }
+        }
     }
 }

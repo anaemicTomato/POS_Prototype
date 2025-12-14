@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controls\CashierControls\**" />
+    <EmbeddedResource Remove="Controls\CashierControls\**" />
+    <None Remove="Controls\CashierControls\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Data\pos.db" />
   </ItemGroup>
 
@@ -19,7 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\CashierControls\" />
     <Folder Include="Images\" />
   </ItemGroup>
 
@@ -27,6 +32,8 @@
     <PackageReference Include="AForge.Video" Version="2.2.5" />
     <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.0" />
+    <PackageReference Include="QuestPDF" Version="2025.12.0" />
+    <PackageReference Include="Siticone.Desktop.UI" Version="2.1.1" />
     <PackageReference Include="System.Data.SQLite" Version="2.0.2" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
     <PackageReference Include="ZXing.Net" Version="0.16.11" />
