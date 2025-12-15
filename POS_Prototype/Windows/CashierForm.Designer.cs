@@ -275,7 +275,7 @@
             dgvCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCart.Columns.AddRange(new DataGridViewColumn[] { colCId, colCname, colCprice, colCqty, colCtotal, colCremove });
             dgvCart.Dock = DockStyle.Fill;
-            dgvCart.EditMode = DataGridViewEditMode.EditOnF2;
+            dgvCart.EditMode = DataGridViewEditMode.EditOnEnter;
             dgvCart.Location = new Point(85, 93);
             dgvCart.Name = "dgvCart";
             dgvCart.RowHeadersWidth = 62;

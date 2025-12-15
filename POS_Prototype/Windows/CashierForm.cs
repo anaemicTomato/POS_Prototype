@@ -67,23 +67,25 @@ namespace POS_Prototype.Windows
             else
             {
 
-                cmd.CommandText = @"
-                    SELECT Id, Name, Price, Stock, Barcode 
-                    FROM Products
-                    WHERE Barcode = @s OR Name LIKE @s_like OR Barcode LIKE @s_like";
+                cmd.CommandText =
+                "SELECT Id, Name, Price, Stock, Barcode " +
+                "FROM Products " +
+                "WHERE Barcode = @s OR Name LIKE @s_like OR Barcode LIKE @s_like";
                 cmd.Parameters.AddWithValue("@s", search);
                 cmd.Parameters.AddWithValue("@s_like", $"%{search}%");
             }
 
-            using var r = cmd.ExecuteReader();
-            while (r.Read())
+            using (var r = cmd.ExecuteReader())
             {
-                dgvProducts.Rows.Add(
-                  r["Id"],
-                  r["Name"],
-                  r["Price"],
-                  r["Stock"]
-                );
+                while (r.Read())
+                {
+                    dgvProducts.Rows.Add(
+                      r["Id"],
+                      r["Name"],
+                      r["Price"],
+                      r["Stock"]
+                    );
+                }
             }
         }
 
@@ -191,7 +193,7 @@ namespace POS_Prototype.Windows
 
         private void DgvCart_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvCart.BeginEdit(true);
+            //dgvCart.BeginEdit(true);
 
             if (e.RowIndex < 0) return;
 
